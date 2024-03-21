@@ -1,5 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Button, Input } from "@nextui-org/react";
+import { Link } from "react-router-dom";
+import Register from "../Register/Register";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -35,9 +37,9 @@ export default function Login() {
         </form>
         <p className="text-center text-[#fff]">
           Já tem uma conta?{" "}
-          <a className="underline hover:text-[#c2c2c2]" href="/Register">
+          <Link className="underline hover:text-[#c2c2c2]" to={'/register'}>
             Cadastre-se
-          </a>
+          </Link>
         </p>
       </div>
     </div>

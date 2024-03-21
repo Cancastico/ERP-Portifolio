@@ -6,5 +6,5 @@ export default function Home() {
         <h1>VITE + TAILWIND + NEXTUI + REACT-ROUTER-DOM</h1>
       </div>
     </div>
-  )
+  );
 }

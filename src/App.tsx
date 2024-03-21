@@ -1,5 +1,5 @@
 import { NextUIProvider } from "@nextui-org/react";
-import { Router } from './routes/router';
+import { Router } from "./routes/router";
 
 export default function App() {
   return (
@@ -8,5 +8,5 @@ export default function App() {
         <Router />
       </NextUIProvider>
     </div>
-  )
+  );
 }

@@ -6,6 +6,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     // Aqui você pode adicionar a lógica de autenticação
     console.log(`Username: ${username}, Password: ${password}`);
   };

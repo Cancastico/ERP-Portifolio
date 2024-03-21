@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button, Input } from "@nextui-org/react";
 
 export default function Register() {
@@ -8,7 +8,8 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const handleLogin = (_event: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     // Aqui você pode adicionar a lógica de autenticação
     console.log(
       `Username: ${username}, Lastname: ${lastname}, Email: ${email}, Password: ${password}, Password Confirm: ${passwordConfirm}`,

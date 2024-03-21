@@ -30,14 +30,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   // const [user, setUser] = useState<user|null>(null);
   // const [error, setError] = useState(false);
 
-  const login = (email: string, password: string) => {
+  const login = (_email: string, _password: string) => {
 
   };
   const register = (
-    name: string,
-    email: string,
-    password: string,
-    passwordConfirm: string,
+    _name: string,
+    _email: string,
+    _password: string,
+    _passwordConfirm: string,
   ) => {
 
   };

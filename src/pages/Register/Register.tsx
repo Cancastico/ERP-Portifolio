@@ -44,39 +44,42 @@ export default function Register() {
           className="flex flex-col gap-3"
           onSubmit={handleSubmit(handleRegister)}
         >
-          <div className="flex flex-col gap-3 md:flex-row md:items-center 
+          <div
+            className="flex flex-col gap-3 md:flex-row md:items-center 
             md:w-full md:text-[#62a798] md:font-medium "
           >
-              <Input 
+            <Input
               errorMessage={errors.name ? errors.name.message : ""}
-              placeholder="Nome" 
-              {...register("name")} />
+              placeholder="Nome"
+              {...register("name")}
+            />
 
-
-              <Input 
+            <Input
               errorMessage={errors.lastname ? errors.lastname.message : ""}
-              placeholder="Sobrenome" 
-              {...register("lastname")} />
+              placeholder="Sobrenome"
+              {...register("lastname")}
+            />
           </div>
 
-            <Input
-              errorMessage={errors.email? errors.email.message : ""}
-              placeholder="Email" {...register("email")} 
-            />
+          <Input
+            errorMessage={errors.email ? errors.email.message : ""}
+            placeholder="Email"
+            {...register("email")}
+          />
 
-            <Input
-              errorMessage={errors.password? errors.password.message : ""}
-              type="password"
-              placeholder="Senha"
-              {...register("password")}
-            />
+          <Input
+            errorMessage={errors.password ? errors.password.message : ""}
+            type="password"
+            placeholder="Senha"
+            {...register("password")}
+          />
 
-            <Input
-              errorMessage={errors.lastname ? errors.lastname.message : ""}
-              type="password"
-              placeholder="Confirme a senha"
-              {...register("passwordconfirm")}
-            />
+          <Input
+            errorMessage={errors.lastname ? errors.lastname.message : ""}
+            type="password"
+            placeholder="Confirme a senha"
+            {...register("passwordconfirm")}
+          />
 
           <Button
             className="text-center text-[#62a798] bg-[#e4e4e4] hover:bg-[#afafaf] text-medium font-bold 4"

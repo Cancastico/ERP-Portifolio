@@ -1,21 +1,15 @@
-import { FormEvent, useState } from "react";
 import { Button, Input } from "@nextui-org/react";
 import { Link } from "react-router-dom";
-import Register from "../Register/Register";
 
 export default function Login() {
 
 
-  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
-    // Aqui você pode adicionar a lógica de autenticação
-    console.log(`Username: ${username}, Password: ${password}`);
-  };
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center bg-[#e9ffff]">
       <div className="w-4/5 md:w-1/3 xl:w-1/4 flex-col flex gap-3 p-4 rounded-xl shadow-md shadow-[#494949] bg-[#62a798]">
         <h3 className="text-center text-[#fff] text-xl font-bold 4">Login</h3>
-        <form className="flex flex-col gap-3" onSubmit={handleLogin}>
+        <form className="flex flex-col gap-3" >
           <Input
             placeholder="Email"
           />

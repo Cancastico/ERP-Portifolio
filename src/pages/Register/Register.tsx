@@ -2,8 +2,11 @@ import { Button, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Register() {
+  const { register: registerUser } = useAuthContext();
+
   const registerSchema = z.object({
     name: z.string().min(3, { message: "Nome é obrigatório" }),
     lastname: z.string().min(3, { message: "Sobrenome é obrigatório" }),
@@ -30,8 +33,14 @@ export default function Register() {
   console.log(errors);
   type RegisterData = z.infer<typeof registerSchema>;
 
-  const handleRegister = (data: RegisterData) => {
-    console.log(data);
+  const handleRegister = async (data: RegisterData) => {
+    await registerUser(
+      data.name,
+      data.lastname,
+      data.email,
+      data.password,
+      data.passwordconfirm,
+    );
   };
 
   return (

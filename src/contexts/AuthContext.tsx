@@ -60,6 +60,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         email,
         password,
         passwordconfirm,
+      }).catch((error) => {
+        throw new Error(error.response.data.error);
       });
 
       Authenticated(user);

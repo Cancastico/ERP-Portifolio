@@ -44,56 +44,39 @@ export default function Register() {
           className="flex flex-col gap-3"
           onSubmit={handleSubmit(handleRegister)}
         >
-          <div className="flex flex-col gap-3 md:flex-row md:gap-3 md:justify-between md:items-center md:w-full md:mx-auto md:text-center md:text-[#62a798] md:font-medium md:4">
-            <div>
-              <Input placeholder="Nome" {...register("name")} />
-              {errors.name && (
-                <p className="text-tiny text-red-600 text-left">
-                  *{errors.name.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <Input placeholder="Sobrenome" {...register("lastname")} />
-              {errors.lastname && (
-                <p className="text-tiny text-red-600 text-left">
-                  {errors.lastname.message}
-                </p>
-              )}
-            </div>
+          <div className="flex flex-col gap-3 md:flex-row md:items-center 
+            md:w-full md:text-[#62a798] md:font-medium "
+          >
+              <Input 
+              errorMessage={errors.name ? errors.name.message : ""}
+              placeholder="Nome" 
+              {...register("name")} />
+
+
+              <Input 
+              errorMessage={errors.lastname ? errors.lastname.message : ""}
+              placeholder="Sobrenome" 
+              {...register("lastname")} />
           </div>
-          <div>
-            <Input placeholder="Email" {...register("email")} />
-            {errors.email && (
-              <p className="text-tiny text-red-600 text-left">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-          <div>
+
             <Input
+              errorMessage={errors.email? errors.email.message : ""}
+              placeholder="Email" {...register("email")} 
+            />
+
+            <Input
+              errorMessage={errors.password? errors.password.message : ""}
               type="password"
               placeholder="Senha"
               {...register("password")}
             />
-            {errors.password && (
-              <p className="text-tiny text-red-600 text-left">
-                *{errors.password.message}
-              </p>
-            )}
-          </div>
-          <div>
+
             <Input
+              errorMessage={errors.lastname ? errors.lastname.message : ""}
               type="password"
               placeholder="Confirme a senha"
               {...register("passwordconfirm")}
             />
-            {errors.passwordconfirm && (
-              <p className="text-tiny text-red-600 text-left">
-                *{errors.passwordconfirm.message}
-              </p>
-            )}
-          </div>
 
           <Button
             className="text-center text-[#62a798] bg-[#e4e4e4] hover:bg-[#afafaf] text-medium font-bold 4"

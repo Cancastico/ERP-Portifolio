@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import Register from "../Register/Register";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
 
   const handleLogin = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
     // Aqui você pode adicionar a lógica de autenticação
     console.log(`Username: ${username}, Password: ${password}`);
   };
@@ -19,13 +17,10 @@ export default function Login() {
         <h3 className="text-center text-[#fff] text-xl font-bold 4">Login</h3>
         <form className="flex flex-col gap-3" onSubmit={handleLogin}>
           <Input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
             placeholder="Email"
           />
           <Input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+          type="password"
             placeholder="Senha"
           />
           <Button

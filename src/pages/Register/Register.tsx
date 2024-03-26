@@ -30,8 +30,9 @@ export default function Register() {
     resolver: zodResolver(registerSchema),
   });
 
-  console.log(errors);
   type RegisterData = z.infer<typeof registerSchema>;
+  
+  console.log(errors);
 
   const handleRegister = async (data: RegisterData) => {
     await registerUser(
@@ -84,7 +85,7 @@ export default function Register() {
           />
 
           <Input
-            errorMessage={errors.lastname ? errors.lastname.message : ""}
+            errorMessage={errors.passwordconfirm ? errors.passwordconfirm.message : ""}
             type="password"
             placeholder="Confirme a senha"
             {...register("passwordconfirm")}

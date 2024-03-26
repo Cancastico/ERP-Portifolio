@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -9,6 +10,7 @@ import { toast } from "react-toastify";
 import { AxiosNode } from "../services/axios";
 import { user } from "../models/user_model";
 import { parseJwt } from "../services/utils";
+import { AxiosResponse } from "axios";
 
 interface AuthContextType {
   login: (email: string, password: string) => Promise<any>;
@@ -34,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     if (user === null) {
-      const jwt = localStorage.getItem("refresh_token");
+      const jwt = localStorage.getItem("token");
       if (jwt) {
         const jwtAlt: user = parseJwt(jwt);
         setUser(jwtAlt);
@@ -54,13 +56,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         toast.error("As senhas não conferem");
         return;
       }
-      const user = await AxiosNode.post<user>("/register", {
+      const user = await AxiosNode.post<user>("/auth/register", {
         name,
         lastname,
         email,
         password,
         passwordconfirm,
-      }).catch((error) => {
+      }).catch((error:any) => {
         throw new Error(error.response.data.error);
       });
 
@@ -87,11 +89,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   function Authenticated(response: AxiosResponse<user, any>) {
     try {
       if (response.status === 200 || response.status === 201) {
-        const refresh_token = response.data.token;
-
-        localStorage.setItem("refresh_token", refresh_token);
+        const token = response.data.token;
+        localStorage.setItem("access", token);
         AxiosNode.defaults.headers.common["Authorization"] =
-          `${localStorage.getItem("refresh_token")}`;
+          `${localStorage.getItem("token")}`;
 
         setUser(response.data);
 

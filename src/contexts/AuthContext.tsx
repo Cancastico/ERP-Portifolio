@@ -76,10 +76,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   async function login(email: string, password: string) {
     try {
-      const user = await AxiosNode.post<user>("/login", { email, password });
+      const axios_response_user = await AxiosNode.post<user>("/auth/login", { email, password });
 
       setIsAuthenticated(true);
-      Authenticated(user);
+      Authenticated(axios_response_user);
     } catch (error: any) {
       setIsAuthenticated(false);
       return toast.error(error.response.data.error);

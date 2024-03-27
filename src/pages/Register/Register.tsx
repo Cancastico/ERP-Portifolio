@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const { register: registerUser } = useAuthContext();
@@ -21,6 +22,8 @@ export default function Register() {
       .string()
       .min(8, { message: "Senha deve ter no mínimo 8 caracteres" }),
   });
+  
+  type RegisterData = z.infer<typeof registerSchema>;
 
   const {
     register,
@@ -30,7 +33,6 @@ export default function Register() {
     resolver: zodResolver(registerSchema),
   });
 
-  type RegisterData = z.infer<typeof registerSchema>;
   
   console.log(errors);
 
@@ -45,8 +47,8 @@ export default function Register() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center bg-[#e9ffff]">
-      <div className="w-4/5 md:w-1/3 xl:w-1/4 flex-col flex gap-3 p-4 rounded-xl shadow-md shadow-[#494949] bg-[#62a798]">
+    <div className="w-full h-screen flex flex-col justify-center items-center md:justify-start md:items-start bg-[#35383c]">
+      <div className="w-4/5 md:w-1/3 xl:w-1/4 flex-col flex gap-3 p-4 rounded-xl md:rounded-none md:h-screen md:items-center md:justify-center shadow-md shadow-[#272727] bg-[#344955]">
         <h3 className="text-center text-[#fff] text-xl font-bold 4">
           Cadastro
         </h3>
@@ -92,7 +94,7 @@ export default function Register() {
           />
 
           <Button
-            className="text-center text-[#62a798] bg-[#e4e4e4] hover:bg-[#afafaf] text-medium font-bold 4"
+            className="text-center text-[#344955] bg-[#e4e4e4] hover:bg-[#afafaf] text-medium font-bold 4"
             type="submit"
           >
             Cadastrar-se
@@ -100,9 +102,9 @@ export default function Register() {
         </form>
         <p className="text-center text-[#fff]">
           Já tem uma conta?{" "}
-          <a className="underline hover:text-[#c2c2c2]" href="/">
+          <Link className="underline hover:text-[#c2c2c2]" to="/">
             Entre
-          </a>
+          </Link>
         </p>
       </div>
     </div>
